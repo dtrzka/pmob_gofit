@@ -87,6 +87,14 @@ class MyApp extends StatelessWidget {
                     text: "15 Minutes | Intermediate",
                     image: AssetImage('images/arms.jpg'),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  colCards(
+                    title: "Tone Your Arms Exercise",
+                    text: "15 Minutes | Intermediate",
+                    image: AssetImage('images/arms.jpg'),
+                  ),
                   // colCards(
                   //     title: "Full Body Workout", text: "20 Minutes | Beginner")
                 ],
