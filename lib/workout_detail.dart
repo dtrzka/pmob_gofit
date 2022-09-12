@@ -46,8 +46,7 @@ class woDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  child: Card(
+                Card(
                     child: Row(
                       children: [
                         Container(
@@ -56,7 +55,7 @@ class woDetail extends StatelessWidget {
                               Ink.image(image: AssetImage('images/yoga1.jpg')),
                         ),
                         Container(
-                            child: Column(
+                          child: Column(
                           children: [
                             Positioned(
                                 child: Text(
@@ -81,7 +80,6 @@ class woDetail extends StatelessWidget {
                       ],
                     ),
                   ),
-                )
               ],
             ),
           ),
