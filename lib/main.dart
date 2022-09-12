@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
+            
             "GoFit",
+            
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 23.5,
