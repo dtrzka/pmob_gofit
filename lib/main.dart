@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/column_Cards.dart';
+import 'package:flutter_1/workout_detail.dart';
 
 void main() {
   runApp(MyApp());
@@ -68,6 +69,18 @@ class MyApp extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     Route route =
+                  //         MaterialPageRoute(builder: (context) => woDetail());
+                  //     Navigator.push(context, route);
+                  //   },
+                  //   child: colCards(
+                  //     title: "Full Body Exercise",
+                  //     text: "20 Minutes | Beginner",
+                  //     image: AssetImage('images/full.jpg'),
+                  //   ),
+                  // ),
                   colCards(
                     title: "Full Body Exercise",
                     text: "20 Minutes | Beginner",
@@ -93,9 +106,9 @@ class MyApp extends StatelessWidget {
                     height: 10,
                   ),
                   colCards(
-                    title: "Tone Your Arms Exercise",
-                    text: "15 Minutes | Intermediate",
-                    image: AssetImage('images/arms.jpg'),
+                    title: "Yoga Women Exercise",
+                    text: "8 Minutes | Intermediate",
+                    image: AssetImage('images/yoga2.jpg'),
                   ),
                   // colCards(
                   //     title: "Full Body Workout", text: "20 Minutes | Beginner")
@@ -122,14 +135,14 @@ class MyApp extends StatelessWidget {
                   icon: Icon(Icons.leaderboard_outlined),
                   onPressed: () {},
                 ),
-                SizedBox(
-                  width: 50,
-                ),
-                IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.view_module_outlined),
-                  onPressed: () {},
-                ),
+                // SizedBox(
+                //   width: 50,
+                // ),
+                // IconButton(
+                //   iconSize: 30,
+                //   icon: Icon(Icons.view_module_outlined),
+                //   onPressed: () {},
+                // ),
                 SizedBox(
                   width: 50,
                 ),
@@ -144,85 +157,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-/* class MyApp extends StatelessWidget {
-  // const MyApp({Key? key}) : super(key: key);
-  final List<Map<String, dynamic>> myList = [
-    {
-      // "Images": AssetImage("Images/full.jpg"),
-      "Title": "Full Body Workout",
-      "Timer": "25 Minutes | Beginner"
-    },
-    {
-      // "Images": AssetImage("Images/abs.jpg"),
-      "Title": "Abs Workout",
-      "Timer": "10 Minutes | Intermediate"
-    },
-    {
-      // "Images": AssetImage("Images/arms.jpg"),
-      "Title": "Toned Arms Workout",
-      "Timer": "10 Minutes | Beginner"
-    }
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "GoFit",
-            style: TextStyle(color: Color.fromARGB(215, 0, 0, 0)),
-          ),
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        ),
-        body: GridView.count(
-          crossAxisCount: 1,
-          children: [
-            CustomCard(
-                title: "Ngendas cok",
-                image: "https://unsplash.com/photos/0Wra5YYVQJE"),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomCard extends StatelessWidget {
-  //ini adalah konstruktor, saat class dipanggil parameter konstruktor wajib diisi
-  //parameter ini akan mengisi title dan gambar pada setiap card
-  CustomCard({required this.title, required this.image});
-
-  String title;
-  String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Card(
-        //menambahkan bayangan
-        elevation: 5,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 100,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(
-                        image,
-                      ),
-                      fit: BoxFit.cover)),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(title),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-} */
