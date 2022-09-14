@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter_1/activity.dart';
 
-class woDetail extends StatelessWidget {
-  const woDetail({Key? key}) : super(key: key);
+class WoDetail extends StatelessWidget {
+  final String title;
+  const WoDetail({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,78 +11,64 @@ class woDetail extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           iconSize: 30,
-          icon: Icon(Icons.arrow_left),
+          icon: const Icon(Icons.arrow_left),
           onPressed: () {},
         ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Yoga Women Exercise",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 40,
-                    ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+          ),
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 32,
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Workout Activity",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 18,
-                    ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                alignment: Alignment.topLeft,
+                child: const Text(
+                  "Workout Activity",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 18,
                   ),
                 ),
-                Card(
-                    child: Row(
-                      children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child:
-                              Ink.image(image: AssetImage('images/yoga1.jpg')),
-                        ),
-                        Container(
-                          child: Column(
-                          children: [
-                            Positioned(
-                                child: Text(
-                              "Yoga 1",
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            )),
-                            Positioned(
-                                child: Text(
-                              "30 Seconds",
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ))
-                          ],
-                        ))
-                      ],
-                    ),
-                  ),
-              ],
-            ),
+              ),
+              const Activity(
+                title: "Warrior 1",
+                text: "30 seconds",
+                id: '1',
+              ),
+              const Activity(
+                title: "Warrior 1",
+                text: "30 seconds",
+                id: '2',
+              ),const Activity(
+                title: "Warrior 1",
+                text: "30 seconds",
+                id: '3',
+              ),const Activity(
+                title: "Warrior 1",
+                text: "30 seconds",
+                id: ' 2',
+              ),
+            ],
           ),
         ),
       ),
