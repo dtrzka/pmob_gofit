@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_1/activity.dart';
+import 'package:flutter_1/homepage.dart';
+import 'package:flutter_1/main.dart';
 
 class WoDetail extends StatelessWidget {
   final String title;
@@ -11,8 +13,16 @@ class WoDetail extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           iconSize: 30,
-          icon: const Icon(Icons.arrow_left),
-          onPressed: () {},
+          icon: const Icon(
+            Icons.west,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Homepage()),
+            );
+          },
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -20,8 +30,8 @@ class WoDetail extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
+            left: 20,
+            right: 20,
           ),
           child: Column(
             children: [
@@ -59,14 +69,16 @@ class WoDetail extends StatelessWidget {
                 title: "Warrior 1",
                 text: "30 seconds",
                 id: '2',
-              ),const Activity(
+              ),
+              const Activity(
                 title: "Warrior 1",
                 text: "30 seconds",
                 id: '3',
-              ),const Activity(
+              ),
+              const Activity(
                 title: "Warrior 1",
                 text: "30 seconds",
-                id: ' 2',
+                id: '2',
               ),
             ],
           ),
