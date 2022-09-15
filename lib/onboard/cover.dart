@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/login.dart';
 
 class Cover extends StatelessWidget {
   const Cover({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class Cover extends StatelessWidget {
             //   fit: BoxFit.cover,
             // ),
             Column(
-              children: const [
+              children: [
                 Padding(
                     padding: EdgeInsets.only(top: 550, right: 170),
                     child: Text(
@@ -48,7 +49,25 @@ class Cover extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 15,
                       ),
-                    ))
+                    )),
+                Container(
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 255, 47, 175),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    height: 50,
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: TextButton(
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Login()));
+                      },
+                    )),
               ],
             )
           ],
