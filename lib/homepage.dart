@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_1/column_Cards.dart';
+import 'package:flutter_1/widget/column_Cards.dart';
+import 'package:flutter_1/profile.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -108,7 +109,10 @@ class Homepage extends StatelessWidget {
                 IconButton(
                   iconSize: 30,
                   icon: Icon(Icons.perm_identity_outlined),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Profile()));
+                  },
                 ),
               ],
             )),
