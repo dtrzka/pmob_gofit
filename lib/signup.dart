@@ -1,50 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/login.dart';
 
 void main() => runApp(const SignUp());
 
 class SignUp extends StatelessWidget {
-    const SignUp({Key? key}) : super(key: key);
-    @override
-    Widget build(BuildContext context) {
-        return const Scaffold(
-            body: Sign(),
-        );
-    }
+  const SignUp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Sign(),
+    );
+  }
 }
 
 class Sign extends StatefulWidget {
-    const Sign({Key? key}) : super(key: key);
+  const Sign({Key? key}) : super(key: key);
 
-    @override
-    State createState() => _MyStatefulWidgetState();
+  @override
+  State createState() => _MyStatefulWidgetState();
 }
 
 class _MyStatefulWidgetState extends State {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    String? gender;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  String? gender;
 
-    @override
-    Widget build(BuildContext context) {
-      return Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              child: const Text(
-                'Fill your profile',
-                style: TextStyle(fontSize: 20),
-                ),
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: ListView(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'Fill your profile',
+              style: TextStyle(fontSize: 20),
             ),
+          ),
           SizedBox(height: 15),
           Center(
             child: CircleAvatar(
               backgroundColor: Colors.grey,
               radius: 50,
               child: Text(
-                'Change your profile picture',
+                'Add your profile picture',
                 style: TextStyle(fontSize: 12, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
@@ -57,9 +58,11 @@ class _MyStatefulWidgetState extends State {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
                   ),
-                  labelText: 'Username',
+                ),
+                labelText: 'Username',
               ),
             ),
           ),
@@ -69,7 +72,9 @@ class _MyStatefulWidgetState extends State {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
                 ),
                 labelText: 'Email',
               ),
@@ -82,7 +87,9 @@ class _MyStatefulWidgetState extends State {
               controller: passwordController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
                 ),
                 labelText: 'Password',
               ),
@@ -95,8 +102,10 @@ class _MyStatefulWidgetState extends State {
               controller: passwordController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
                   ),
+                ),
                 labelText: 'Retype Password',
               ),
             ),
@@ -107,8 +116,10 @@ class _MyStatefulWidgetState extends State {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
                   ),
+                ),
                 labelText: 'Age',
               ),
             ),
@@ -119,7 +130,9 @@ class _MyStatefulWidgetState extends State {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
                 ),
                 labelText: 'Height (cm)',
               ),
@@ -131,10 +144,19 @@ class _MyStatefulWidgetState extends State {
               controller: nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
                 ),
                 labelText: 'Weight (kg)',
               ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              "Gender",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
           ),
           Row(
@@ -144,13 +166,16 @@ class _MyStatefulWidgetState extends State {
                 child: Row(
                   children: [
                     Radio(
-                      value: "male", 
-                      groupValue: gender, 
-                      onChanged: (value){
-                        setState(() {
-                          gender = value.toString();
-                          },);
-                      },),
+                      value: "male",
+                      groupValue: gender,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            gender = value.toString();
+                          },
+                        );
+                      },
+                    ),
                     Expanded(child: Text('Male'))
                   ],
                 ),
@@ -160,33 +185,38 @@ class _MyStatefulWidgetState extends State {
                 child: Row(
                   children: [
                     Radio(
-                      value: "female", 
-                      groupValue: gender, 
-                      onChanged: (value){
+                      value: "female",
+                      groupValue: gender,
+                      onChanged: (value) {
                         setState(() {
                           gender = value.toString();
-                          });
+                        });
                       },
                     ),
                     Expanded(child: Text('Female'))
                   ],
                 ),
               ),
-          ],),
-          SizedBox(height: 15,),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
           Container(
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 255, 47, 175),
-              borderRadius: BorderRadius.circular(10),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 255, 47, 175),
+                borderRadius: BorderRadius.circular(10),
               ),
               height: 50,
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: TextButton(
                 child: const Text(
-                  'Regist',
+                  'Sign Up',
                   style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
-                  ),
+                ),
                 onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => Login()));
                 },
               )),
           Row(
@@ -207,7 +237,7 @@ class _MyStatefulWidgetState extends State {
               )
             ],
             mainAxisAlignment: MainAxisAlignment.center,
-            ),
+          ),
         ],
       ),
     );

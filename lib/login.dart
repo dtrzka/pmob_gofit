@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_1/homepage.dart';
+import 'package:flutter_1/signup.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -115,7 +116,8 @@ class _MyStatefulWidgetState extends State {
                     ),
                   ),
                   onPressed: () {
-                    //signup screen
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => SignUp()));
                   },
                 )
               ],
