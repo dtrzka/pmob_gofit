@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_1/column_Cards.dart';
+import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/onboard/splash.dart';
 
 void main() {

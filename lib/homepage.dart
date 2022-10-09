@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_1/column_Cards.dart';
+import 'package:flutter_1/widget/column_Cards.dart';
+import 'package:flutter_1/profile.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -15,11 +16,6 @@ class Homepage extends StatelessWidget {
                 color: Colors.black,
                 fontSize: 23.5,
                 fontWeight: FontWeight.bold),
-            // style: GoogleFonts.acme(
-            //     textStyle: (Theme.of(context).textTheme.headline4),
-            //     color: Colors.black,
-            //     fontSize: 20,
-            //     fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.white,
           elevation: 0,
@@ -57,18 +53,6 @@ class Homepage extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Route route =
-              //         MaterialPageRoute(builder: (context) => woDetail());
-              //     Navigator.push(context, route);
-              //   },
-              //   child: colCards(
-              //     title: "Full Body Exercise",
-              //     text: "20 Minutes | Beginner",
-              //     image: AssetImage('images/full.jpg'),
-              //   ),
-              // ),
               colCards(
                 title: "Full Body Exercise",
                 text: "20 Minutes | Beginner",
@@ -119,21 +103,16 @@ class Homepage extends StatelessWidget {
                   icon: Icon(Icons.leaderboard_outlined),
                   onPressed: () {},
                 ),
-                // SizedBox(
-                //   width: 50,
-                // ),
-                // IconButton(
-                //   iconSize: 30,
-                //   icon: Icon(Icons.view_module_outlined),
-                //   onPressed: () {},
-                // ),
                 SizedBox(
                   width: 50,
                 ),
                 IconButton(
                   iconSize: 30,
                   icon: Icon(Icons.perm_identity_outlined),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Profile()));
+                  },
                 ),
               ],
             )),

@@ -27,7 +27,6 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Center(
           child: Container(
-        // color: Colors.black,
         child: Image(image: const AssetImage('images/logo.png')),
       )),
     );

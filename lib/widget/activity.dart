@@ -15,7 +15,7 @@ class Activity extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      elevation: 0,
+      elevation: 2,
       child: InkWell(
         onTap: () {
           // Navigator.push(
@@ -28,13 +28,13 @@ class Activity extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: AspectRatio(
-                aspectRatio: 1/1,
+                aspectRatio: 1 / 1,
                 child: Ink.image(
-                    image: AssetImage('images/yoga$id.jpg'),
-                    height: 100,
-                    fit: BoxFit.fitHeight,
-                    alignment: Alignment.centerLeft,
-                  ),
+                  image: AssetImage('images/yoga$id.jpg'),
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                  alignment: Alignment.center,
+                ),
               ),
             ),
             SizedBox(
