@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_1/login.dart';
+import 'package:flutter_1/target.dart';
 
 void main() => runApp(const SignUp());
 
@@ -33,10 +35,19 @@ class _MyStatefulWidgetState extends State {
         children: [
           Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(top: 60),
             child: const Text(
               'Fill your profile',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.only(right: 25, left: 25, top: 20),
+            child: const Text(
+              "Don't worry, you can change it later or you can skip it for now",
+              style: TextStyle(fontSize: 15),
+              textAlign: TextAlign.center,
             ),
           ),
           SizedBox(height: 15),
@@ -110,97 +121,8 @@ class _MyStatefulWidgetState extends State {
               ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: TextField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                labelText: 'Age',
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: TextField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                labelText: 'Height (cm)',
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: TextField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                labelText: 'Weight (kg)',
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              "Gender",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-            ),
-          ),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Row(
-                  children: [
-                    Radio(
-                      value: "male",
-                      groupValue: gender,
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            gender = value.toString();
-                          },
-                        );
-                      },
-                    ),
-                    Expanded(child: Text('Male'))
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Row(
-                  children: [
-                    Radio(
-                      value: "female",
-                      groupValue: gender,
-                      onChanged: (value) {
-                        setState(() {
-                          gender = value.toString();
-                        });
-                      },
-                    ),
-                    Expanded(child: Text('Female'))
-                  ],
-                ),
-              ),
-            ],
-          ),
           SizedBox(
-            height: 15,
+            height: 45,
           ),
           Container(
               decoration: BoxDecoration(
@@ -211,33 +133,14 @@ class _MyStatefulWidgetState extends State {
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: TextButton(
                 child: const Text(
-                  'Sign Up',
+                  'Next',
                   style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                 ),
                 onPressed: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Login()));
+                      MaterialPageRoute(builder: (context) => UserTarget()));
                 },
               )),
-          Row(
-            // ignore: sort_child_properties_last
-            children: [
-              const Text('Already have an account?'),
-              TextButton(
-                child: const Text(
-                  'Sign in',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Color.fromARGB(255, 255, 47, 175),
-                  ),
-                ),
-                onPressed: () {
-                  //login screen
-                },
-              )
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
         ],
       ),
     );
