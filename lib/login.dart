@@ -106,7 +106,7 @@ class _MyStatefulWidgetState extends State {
             Row(
               // ignore: sort_child_properties_last
               children: [
-                //const Text('Does not have account?'),
+                const Text('Does not have account?'),
                 TextButton(
                   child: const Text(
                     'Sign in',
