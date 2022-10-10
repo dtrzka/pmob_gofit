@@ -33,6 +33,9 @@ class Profile extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(
           children: [
+            SizedBox(
+              height: 15,
+            ),
             Container(
                 child: Center(
               child: Column(
