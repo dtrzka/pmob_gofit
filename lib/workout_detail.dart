@@ -60,6 +60,9 @@ class WoDetail extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 15,
+              ),
               const Activity(
                 title: "Warrior 1",
                 text: "30 seconds",
