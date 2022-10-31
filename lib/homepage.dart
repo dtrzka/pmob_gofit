@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/leaderboard.dart';
 import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/profile.dart';
 
@@ -77,7 +78,7 @@ class _HomepageState extends State<Homepage> {
             ],
           ),
         ),
-        Profile(),
+        Leaderboard(),
         Profile(),
   ];
 

@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // title: 'GoFit',
+      theme: ThemeData(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.black))),
       home: Splash(),
     );
   }

@@ -137,10 +137,25 @@ class _MyStatefulWidgetState extends State {
                   style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(context,
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => UserTarget()));
                 },
               )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Already have an account?'),
+              SizedBox(width: 5, height: 50,),
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                  child: const Text('Sign in',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 255, 47, 175),
+                      )))
+            ],
+          )
         ],
       ),
     );

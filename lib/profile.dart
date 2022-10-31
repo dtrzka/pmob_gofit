@@ -42,14 +42,11 @@ class Profile extends StatelessWidget {
                             backgroundColor: Color.fromARGB(255, 212, 215, 219),
                           ),
                           onPressed: () {},
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
+                          
+                          child: Icon(
                               Icons.edit_outlined,
                               color: Colors.black45,
                             ),
-                            padding: EdgeInsets.all(0.5),
-                          ),
                         ),
                       ),
                     )
