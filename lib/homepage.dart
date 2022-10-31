@@ -2,25 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/profile.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "FitMe",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 23.5,
-                fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.white,
-          elevation: 0,
-        ),
-        body: SingleChildScrollView(
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  int currentIndex = 0;
+  final screens = [
+    SingleChildScrollView(
           padding: const EdgeInsets.all(12),
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
@@ -85,38 +77,71 @@ class Homepage extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.home),
-                  onPressed: () {},
+        Profile(),
+        Profile(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "FitMe",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 23.5,
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: screens[currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: this.currentIndex,
+          onTap: (index) => setState(() {
+            currentIndex = index;
+          }),
+          showUnselectedLabels: false,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home_outlined),
+                  activeIcon: Icon(Icons.home),
+                  label: "Home"
                 ),
-                SizedBox(
-                  width: 50,
-                ),
-                IconButton(
-                  iconSize: 30,
+                BottomNavigationBarItem(
                   icon: Icon(Icons.leaderboard_outlined),
-                  onPressed: () {},
+                  activeIcon: Icon(Icons.leaderboard),
+                  label: "Leaderboard"
                 ),
-                SizedBox(
-                  width: 50,
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outline),
+                  activeIcon: Icon(Icons.person),
+                  label: "Profile"
                 ),
-                IconButton(
-                  iconSize: 30,
-                  icon: Icon(Icons.perm_identity_outlined),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Profile()));
-                  },
-                ),
-              ],
-            )),
-      ),
-    );
+                // SizedBox(
+                //   width: 50,
+                // ),
+                // IconButton(
+                //   iconSize: 30,
+                //   icon: Icon(Icons.leaderboard_outlined),
+                //   onPressed: () {},
+                // ),
+                // SizedBox(
+                //   width: 50,
+                // ),
+                // IconButton(
+                //   iconSize: 30,
+                //   icon: Icon(Icons.perm_identity_outlined),
+                //   onPressed: () {
+                //     Navigator.of(context).push(
+                //         MaterialPageRoute(builder: (context) => Profile()));
+                //   },
+                // ),
+              ]
+            )));
   }
 }
