@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/provider/workouts.dart';
+import 'package:flutter_1/workout_detail.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/profile.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final workoutData = Provider.of<Workout>(context);
+
+    final allworkout = workoutData.allproducts;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -21,70 +27,44 @@ class Homepage extends StatelessWidget {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Morning, Julie!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 40,
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Morning, Julie!",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 40,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Featured Workout",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 18,
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Featured Workout",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              colCards(
-                title: "Full Body Exercise",
-                text: "20 Minutes | Beginner",
-                image: 'full.jpg',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              colCards(
-                title: "Intense Abs Exercise",
-                text: "10 Minutes | Beginner",
-                image: 'abs.jpg',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              colCards(
-                title: "Tone Your Arms Exercise",
-                text: "15 Minutes | Intermediate",
-                image: 'arms.jpg',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              colCards(
-                title: "Yoga Women Exercise",
-                text: "8 Minutes | Intermediate",
-                image: 'yoga2.jpg',
-              ),
-            ],
-          ),
-        ),
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: allworkout.length,
+                    itemBuilder: (ctx, i) => colCards(
+                        allworkout[i].id,
+                        allworkout[i].title,
+                        allworkout[i].text,
+                        allworkout[i].image))
+              ],
+            )),
         bottomNavigationBar: BottomAppBar(
             color: Colors.white,
             child: Row(
@@ -117,6 +97,9 @@ class Homepage extends StatelessWidget {
               ],
             )),
       ),
+      routes: {
+        WoDetail.routeName: (ctx) => WoDetail(),
+      },
     );
   }
 }
