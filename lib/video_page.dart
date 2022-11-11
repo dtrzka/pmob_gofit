@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -43,7 +41,7 @@ class _VideoPlayer extends State<Video> {
           YoutubePlayer(
             controller: _controller,
             showVideoProgressIndicator: true,
-            onReady: () => debugPrint('Ready'),
+            /* onReady: () => debugPrint('Ready'),
             bottomActions: [
               CurrentPosition(),
               ProgressBar(
@@ -52,7 +50,7 @@ class _VideoPlayer extends State<Video> {
                       playedColor: Color.fromARGB(255, 255, 47, 175),
                       handleColor: Color.fromARGB(255, 255, 47, 175))),
               const PlaybackSpeedButton()
-            ],
+            ], */
           )
         ],
       ),
