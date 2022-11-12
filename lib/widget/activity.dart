@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/video_page.dart';
 
 class Activity extends StatelessWidget {
   final String title;
@@ -18,10 +19,10 @@ class Activity extends StatelessWidget {
       elevation: 2,
       child: InkWell(
         onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const WoDetail()),
-          // );
+          /* Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Video()),
+          ); */
         },
         child: Row(
           // alignment: Alignment.center,

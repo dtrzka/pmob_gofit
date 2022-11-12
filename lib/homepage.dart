@@ -1,89 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_1/leaderboard.dart';
+import 'package:flutter_1/provider/workouts.dart';
+import 'package:flutter_1/workout_detail.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/profile.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({Key? key}) : super(key: key);
-
-  @override
-  State<Homepage> createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  int currentIndex = 0;
-  final screens = [
-    SingleChildScrollView(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Morning, Julie!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 40,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Featured Workout",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              colCards(
-                title: "Full Body Exercise",
-                text: "20 Minutes | Beginner",
-                image: 'full.jpg',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              colCards(
-                title: "Intense Abs Exercise",
-                text: "10 Minutes | Beginner",
-                image: 'abs.jpg',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              colCards(
-                title: "Tone Your Arms Exercise",
-                text: "15 Minutes | Intermediate",
-                image: 'arms.jpg',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              colCards(
-                title: "Yoga Women Exercise",
-                text: "8 Minutes | Intermediate",
-                image: 'yoga2.jpg',
-              ),
-            ],
-          ),
-        ),
-        Leaderboard(),
-        Profile(),
-  ];
-
+class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final workoutData = Provider.of<Workout>(context);
+
+    final allworkout = workoutData.allproducts;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -98,51 +26,80 @@ class _HomepageState extends State<Homepage> {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        body: screens[currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: this.currentIndex,
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
-          showUnselectedLabels: false,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined),
-                  activeIcon: Icon(Icons.home),
-                  label: "Home"
+        body: SingleChildScrollView(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Morning, Julie!",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 40,
+                    ),
+                  ),
                 ),
-                BottomNavigationBarItem(
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Featured Workout",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: allworkout.length,
+                    itemBuilder: (ctx, i) => colCards(
+                        allworkout[i].id,
+                        allworkout[i].title,
+                        allworkout[i].text,
+                        allworkout[i].image))
+              ],
+            )),
+        bottomNavigationBar: BottomAppBar(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  iconSize: 30,
+                  icon: Icon(Icons.home),
+                  onPressed: () {},
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                IconButton(
+                  iconSize: 30,
                   icon: Icon(Icons.leaderboard_outlined),
-                  activeIcon: Icon(Icons.leaderboard),
-                  label: "Leaderboard"
+                  onPressed: () {},
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline),
-                  activeIcon: Icon(Icons.person),
-                  label: "Profile"
+                SizedBox(
+                  width: 50,
                 ),
-                // SizedBox(
-                //   width: 50,
-                // ),
-                // IconButton(
-                //   iconSize: 30,
-                //   icon: Icon(Icons.leaderboard_outlined),
-                //   onPressed: () {},
-                // ),
-                // SizedBox(
-                //   width: 50,
-                // ),
-                // IconButton(
-                //   iconSize: 30,
-                //   icon: Icon(Icons.perm_identity_outlined),
-                //   onPressed: () {
-                //     Navigator.of(context).push(
-                //         MaterialPageRoute(builder: (context) => Profile()));
-                //   },
-                // ),
-              ]
-            )));
+                IconButton(
+                  iconSize: 30,
+                  icon: Icon(Icons.perm_identity_outlined),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Profile()));
+                  },
+                ),
+              ],
+            )),
+      ),
+      routes: {
+        WoDetail.routeName: (ctx) => WoDetail(),
+      },
+    );
   }
 }

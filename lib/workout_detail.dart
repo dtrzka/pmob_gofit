@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/models/workout.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_1/widget/activity.dart';
 import 'package:flutter_1/homepage.dart';
-import 'package:flutter_1/main.dart';
+import 'package:flutter_1/provider/workouts.dart';
 
 class WoDetail extends StatelessWidget {
-  final String title;
-  const WoDetail({Key? key, required this.title}) : super(key: key);
+  static const routeName = '/workout-detail';
 
   @override
   Widget build(BuildContext context) {
+    final workoutId =
+        ModalRoute.of(context)?.settings.arguments as String; // is the id!
+    final workout = Provider.of<Workout>(context).findById(workoutId);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -27,7 +32,7 @@ class WoDetail extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
+      body: Container(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 20,
@@ -38,7 +43,7 @@ class WoDetail extends StatelessWidget {
               Container(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  title,
+                  "${workout.title}",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -63,11 +68,22 @@ class WoDetail extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              const Activity(
+              /* InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => Video()));
+                },
+                child: Activity(
+                  title: "Warrior 1",
+                  text: "30 seconds",
+                  id: '1',
+                ),
+              ), */
+              /* const Activity(
                 title: "Warrior 1",
                 text: "30 seconds",
                 id: '1',
-              ),
+              ), */
               const Activity(
                 title: "Warrior 1",
                 text: "30 seconds",
