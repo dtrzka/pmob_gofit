@@ -116,7 +116,7 @@ class _MyStatefulWidgetState extends State {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushReplacement(context,
+                    Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUp()));
                   },
                 )

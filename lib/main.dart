@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // title: 'GoFit',
       home: Steps(),
+      theme: ThemeData(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.black))),
     );
   }
 }
