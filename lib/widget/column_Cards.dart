@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_1/workout_detail.dart';
 
 class colCards extends StatelessWidget {
-  final String id;
   final String title;
   final String text;
   final String image;
-  colCards(this.id, this.title, this.text, this.image);
+  const colCards(
+      {Key? key, required this.title, required this.text, required this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,9 @@ class colCards extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(
-            WoDetail.routeName,
-            arguments: id,
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WoDetail(title: title)),
           );
         },
         child: Stack(
