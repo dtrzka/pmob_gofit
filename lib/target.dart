@@ -31,7 +31,7 @@ class _MyStatefulWidgetState extends State {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 60),
+      padding: const EdgeInsets.fromLTRB(15, 60, 15, 0),
       child: ListView(
         children: [
           Container(
@@ -113,6 +113,8 @@ class _MyStatefulWidgetState extends State {
                   children: [
                     Radio(
                       value: "male",
+                      // Semisal mau ganti warna radio buttonya, ini di uncomment
+                      // fillColor: MaterialStateColor.resolveWith((states) => Color.fromARGB(255, 255, 47, 175)),
                       groupValue: gender,
                       onChanged: (value) {
                         setState(
@@ -148,72 +150,97 @@ class _MyStatefulWidgetState extends State {
           SizedBox(
             height: 15,
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: 30,
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 245, 225, 237),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  height: 50,
-                  padding: const EdgeInsets.only(right: 50, left: 50),
-                  child: TextButton(
-                    child: const Text(
-                      'Back',
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 255, 47, 175)),
-                    ),
-                    onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => SignUp()));
-                    },
-                  )),
-              SizedBox(
-                width: 20,
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 255, 47, 175),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  height: 50,
-                  padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
-                  child: TextButton(
-                    child: const Text(
-                      'Sign Up',
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
-                    ),
-                    onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => Homepage()));
-                    },
-                  )),
-            ],
-          ),
-          Row(
-            // ignore: sort_child_properties_last
-            children: [
-              const Text('Already have an account?'),
-              TextButton(
-                child: const Text(
-                  'Sign in',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Color.fromARGB(255, 255, 47, 175),
+          Padding(
+            padding: EdgeInsets.only(left: 15, right: 15),
+            child: Row(children: [
+              Expanded(
+                  child: SizedBox(
+                height: 50,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 245, 225, 237),
+                      foregroundColor: Colors.black),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "Back",
+                    style: TextStyle(color: Color.fromARGB(255, 255, 47, 175)),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Login()));
-                },
-              )
-            ],
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
+              )),
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                  child: SizedBox(
+                height: 50,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 255, 47, 175),
+                      foregroundColor: Colors.black),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return Homepage();
+                    }), (r) {
+                      return false;
+                    });
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
+                ),
+              )),
+            ]),
+          )
+          // Row(
+          //   children: [
+          //     SizedBox(
+          //       width: 30,
+          //     ),
+          //     Container(
+          //         decoration: BoxDecoration(
+          //           color: Color.fromARGB(255, 245, 225, 237),
+          //           borderRadius: BorderRadius.circular(10),
+          //         ),
+          //         height: 50,
+          //         padding: const EdgeInsets.only(right: 50, left: 50),
+          //         child: TextButton(
+          //           child: const Text(
+          //             'Back',
+          //             style:
+          //                 TextStyle(color: Color.fromARGB(255, 255, 47, 175)),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.pushReplacement(context,
+          //                 MaterialPageRoute(builder: (context) => SignUp()));
+          //           },
+          //         )),
+          //     SizedBox(
+          //       width: 20,
+          //     ),
+          //     Container(
+          //         decoration: BoxDecoration(
+          //           color: const Color.fromARGB(255, 255, 47, 175),
+          //           borderRadius: BorderRadius.circular(10),
+          //         ),
+          //         height: 50,
+          //         padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+          //         child: TextButton(
+          //           child: const Text(
+          //             'Sign Up',
+          //             style:
+          //                 TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.pushReplacement(context,
+          //                 MaterialPageRoute(builder: (context) => Homepage()));
+          //           },
+          //         )),
+          //   ],
+          // ),
         ],
       ),
     );
