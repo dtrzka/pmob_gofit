@@ -7,6 +7,7 @@ class colCards extends StatelessWidget {
   final String text;
   final String image;
   colCards(this.id, this.title, this.text, this.image);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -16,9 +17,8 @@ class colCards extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(
-            context,
-            '/workout-detail',
+          Navigator.of(context).pushNamed(
+            WoDetail.routeName,
             arguments: id,
           );
         },

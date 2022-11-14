@@ -158,8 +158,9 @@ class _MyStatefulWidgetState extends State {
                 height: 50,
                 child: TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 245, 225, 237),
-                      foregroundColor: Colors.black),
+                    backgroundColor: Color.fromARGB(
+                        255, 245, 225, 237), /* foregroundColor: Colors.black */
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -177,8 +178,9 @@ class _MyStatefulWidgetState extends State {
                 height: 50,
                 child: TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 255, 47, 175),
-                      foregroundColor: Colors.black),
+                    backgroundColor: Color.fromARGB(
+                        255, 255, 47, 175), /* foregroundColor: Colors.black */
+                  ),
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(context,
                         MaterialPageRoute(builder: (BuildContext context) {
