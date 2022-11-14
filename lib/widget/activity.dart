@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/gifstep.dart';
 import 'package:flutter_1/video_page.dart';
 
 class Activity extends StatelessWidget {
   final String title;
   final String text;
   final String id;
-  const Activity(
-      {Key? key, required this.title, required this.text, required this.id})
-      : super(key: key);
+  final String image;
+  Activity(this.title, this.text, this.id, this.image);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class Activity extends StatelessWidget {
       elevation: 2,
       child: InkWell(
         onTap: () {
-          /* Navigator.push(
+          Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Video()),
-          ); */
+            MaterialPageRoute(builder: (context) => const Steps()),
+          );
         },
         child: Row(
           // alignment: Alignment.center,
@@ -31,7 +31,7 @@ class Activity extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1 / 1,
                 child: Ink.image(
-                  image: AssetImage('images/yoga$id.jpg'),
+                  image: AssetImage('images/$image'),
                   height: 100,
                   fit: BoxFit.fitHeight,
                   alignment: Alignment.center,

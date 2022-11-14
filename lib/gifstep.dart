@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1/homepage.dart';
 
 void main() => runApp(const Steps());
 
@@ -8,8 +9,25 @@ class Steps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListView(
+        appBar: AppBar(
+          leading: IconButton(
+            iconSize: 30,
+            icon: const Icon(
+              Icons.west,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(
+                context,
+                MaterialPageRoute(builder: (context) => Homepage()),
+              );
+            },
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: Center(
+            child: ListView(
           children: [
             Container(
               alignment: Alignment.center,
@@ -21,8 +39,8 @@ class Steps extends StatelessWidget {
               ),
             ),
             const SizedBox(
-                height: 20,
-              ),
+              height: 20,
+            ),
             Text(
               //"Stand with your feet together and your hands at your sides",
               "Step Jack",
@@ -31,39 +49,38 @@ class Steps extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
                 fontSize: 18,
-                
-                ),
-                ),
-            const SizedBox(
-                height: 20,
               ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text('Stand with your feet together and your hands at your sides'),
-                ),
-                ),
+                child: Text(
+                    'Stand with your feet together and your hands at your sides'),
+              ),
+            ),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text('Take a lateral step and clap your hands above your head at the same time'),
-                ),
-                ),
+                child: Text(
+                    'Take a lateral step and clap your hands above your head at the same time'),
+              ),
+            ),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text('Return to the starting position'),
-                ),
-                ),
+              ),
+            ),
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text('Repeat'),
-                ),
-                ),
-             ],
-             
-        )
-        ));
+              ),
+            ),
+          ],
+        )));
   }
-  }
+}

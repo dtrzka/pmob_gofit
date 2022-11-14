@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_1/models/workout.dart';
+import 'package:flutter_1/models/workoutdetail.dart';
+import 'package:flutter_1/provider/workoutsets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_1/widget/activity.dart';
 import 'package:flutter_1/homepage.dart';
@@ -13,6 +15,8 @@ class WoDetail extends StatelessWidget {
     final workoutId =
         ModalRoute.of(context)?.settings.arguments as String; // is the id!
     final workout = Provider.of<Workout>(context).findById(workoutId);
+    final workoutData = Provider.of<Workout>(context);
+    final allworkout = workoutData.allproducts;
 
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +27,7 @@ class WoDetail extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
               context,
               MaterialPageRoute(builder: (context) => Homepage()),
             );
@@ -84,7 +88,12 @@ class WoDetail extends StatelessWidget {
                 text: "30 seconds",
                 id: '1',
               ), */
-              const Activity(
+              ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: exercise1.length,
+                  itemBuilder: (ctx, i) => Activity(exercise1[i].title,
+                      exercise1[i].text, exercise1[i].id, exercise1[i].image)),
+              /* const Activity(
                 title: "Warrior 1",
                 text: "30 seconds",
                 id: '2',
@@ -98,7 +107,7 @@ class WoDetail extends StatelessWidget {
                 title: "Warrior 1",
                 text: "30 seconds",
                 id: '2',
-              ),
+              ), */
             ],
           ),
         ),

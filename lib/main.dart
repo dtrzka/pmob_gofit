@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_1/provider/workouts.dart';
-import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/onboard/splash.dart';
-import 'package:flutter_1/workout_detail.dart';
 import 'package:provider/provider.dart';
 
 void main() {
