@@ -4,12 +4,19 @@ import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/provider/workouts.dart';
 import 'package:flutter_1/workout_detail.dart';
 import 'package:provider/provider.dart';
+<<<<<<< Updated upstream
 import 'package:flutter_1/profile.dart';
 
 Map<String, WidgetBuilder> routes = {
   "/workout-detail": (context) => WoDetail()
 };
 
+=======
+import 'package:flutter_1/leaderboard.dart';
+import 'package:flutter_1/widget/column_Cards.dart';
+import 'package:flutter_1/profile.dart';
+
+>>>>>>> Stashed changes
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
@@ -17,9 +24,18 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
+<<<<<<< Updated upstream
 class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
 
+=======
+Map<String, WidgetBuilder> routes = {
+  "/workout-detail": (context) => WoDetail()
+};
+
+class _HomepageState extends State<Homepage> {
+  int currentIndex = 0;
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     final workoutData = Provider.of<Workout>(context);
@@ -63,16 +79,27 @@ class _HomepageState extends State<Homepage> {
                 shrinkWrap: true,
                 itemCount: allworkout.length,
                 itemBuilder: (ctx, i) => colCards(
+<<<<<<< Updated upstream
                     id: allworkout[i].id,
                     title: allworkout[i].title,
                     text: allworkout[i].text,
                     image: allworkout[i].image)),
+=======
+                    allworkout[i].id,
+                    allworkout[i].title,
+                    allworkout[i].text,
+                    allworkout[i].image))
+>>>>>>> Stashed changes
           ],
         ),
       ),
       Leaderboard(),
       Profile(),
     ];
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: routes,
@@ -111,6 +138,7 @@ class _HomepageState extends State<Homepage> {
                       icon: Icon(Icons.person_outline),
                       activeIcon: Icon(Icons.person),
                       label: "Profile"),
+<<<<<<< Updated upstream
                   // SizedBox(
                   //   width: 50,
                   // ),
@@ -130,6 +158,8 @@ class _HomepageState extends State<Homepage> {
                   //         MaterialPageRoute(builder: (context) => Profile()));
                   //   },
                   // ),
+=======
+>>>>>>> Stashed changes
                 ])));
   }
 }
