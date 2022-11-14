@@ -5,10 +5,14 @@ class colCards extends StatelessWidget {
   final String title;
   final String text;
   final String image;
+  final String id;
   const colCards(
-      {Key? key, required this.title, required this.text, required this.image})
+      {Key? key,
+      required this.title,
+      required this.text,
+      required this.image,
+      required this.id})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,9 +22,10 @@ class colCards extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.push(
+          Navigator.pushNamed(
             context,
-            MaterialPageRoute(builder: (context) => WoDetail(title: title)),
+            '/workout-detail',
+            arguments: id,
           );
         },
         child: Stack(
