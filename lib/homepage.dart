@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_1/leaderboard.dart';
-import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/provider/workouts.dart';
 import 'package:flutter_1/workout_detail.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_1/leaderboard.dart';
+import 'package:flutter_1/widget/column_Cards.dart';
 import 'package:flutter_1/profile.dart';
-
-Map<String, WidgetBuilder> routes = {
-  "/workout-detail": (context) => WoDetail()
-};
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -17,9 +13,12 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
+Map<String, WidgetBuilder> routes = {
+  "/workout-detail": (context) => WoDetail()
+};
+
 class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final workoutData = Provider.of<Workout>(context);
@@ -63,16 +62,17 @@ class _HomepageState extends State<Homepage> {
                 shrinkWrap: true,
                 itemCount: allworkout.length,
                 itemBuilder: (ctx, i) => colCards(
-                    id: allworkout[i].id,
-                    title: allworkout[i].title,
-                    text: allworkout[i].text,
-                    image: allworkout[i].image)),
+                    allworkout[i].id,
+                    allworkout[i].title,
+                    allworkout[i].text,
+                    allworkout[i].image))
           ],
         ),
       ),
       Leaderboard(),
       Profile(),
     ];
+
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: routes,
@@ -111,25 +111,6 @@ class _HomepageState extends State<Homepage> {
                       icon: Icon(Icons.person_outline),
                       activeIcon: Icon(Icons.person),
                       label: "Profile"),
-                  // SizedBox(
-                  //   width: 50,
-                  // ),
-                  // IconButton(
-                  //   iconSize: 30,
-                  //   icon: Icon(Icons.leaderboard_outlined),
-                  //   onPressed: () {},
-                  // ),
-                  // SizedBox(
-                  //   width: 50,
-                  // ),
-                  // IconButton(
-                  //   iconSize: 30,
-                  //   icon: Icon(Icons.perm_identity_outlined),
-                  //   onPressed: () {
-                  //     Navigator.of(context).push(
-                  //         MaterialPageRoute(builder: (context) => Profile()));
-                  //   },
-                  // ),
                 ])));
   }
 }
