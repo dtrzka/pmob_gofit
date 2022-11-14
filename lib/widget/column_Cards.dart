@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_1/workout_detail.dart';
 
 class colCards extends StatelessWidget {
+  final String id;
   final String title;
   final String text;
   final String image;
-  final String id;
-  const colCards(
-      {Key? key,
-      required this.title,
-      required this.text,
-      required this.image,
-      required this.id})
-      : super(key: key);
+  colCards(this.id, this.title, this.text, this.image);
   @override
   Widget build(BuildContext context) {
     return Card(
