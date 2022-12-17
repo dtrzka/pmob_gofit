@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "102193434233",
+    "project_id": "gofit-2ad20",
+    "storage_bucket": "gofit-2ad20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102193434233:android:fa71465c1d67582b0dcea8",
+        "android_client_info": {
+          "package_name": "com.example.flutter_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102193434233-u61cqvqpq6onuc1371bvgp3pk8bqkbkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwnWHsDf5TwR3H-eJ833BNXbe54qzXmOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102193434233-u61cqvqpq6onuc1371bvgp3pk8bqkbkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
