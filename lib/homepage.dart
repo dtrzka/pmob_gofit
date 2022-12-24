@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/provider/workouts.dart';
 import 'package:flutter_1/workout_detail.dart';
@@ -21,6 +22,7 @@ class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     final workoutData = Provider.of<Workout>(context);
     final allworkout = workoutData.allproducts;
     final screens = [
@@ -32,7 +34,7 @@ class _HomepageState extends State<Homepage> {
             Container(
               alignment: Alignment.topLeft,
               child: Text(
-                "Morning, Julie!",
+                "Morning, ${user.email!}!",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,

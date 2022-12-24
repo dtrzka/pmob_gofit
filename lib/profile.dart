@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/edit_profile.dart';
 import 'package:flutter_1/widget/profile_menu.dart';
@@ -42,11 +43,10 @@ class Profile extends StatelessWidget {
                             backgroundColor: Color.fromARGB(255, 212, 215, 219),
                           ),
                           onPressed: () {},
-                          
                           child: Icon(
-                              Icons.edit_outlined,
-                              color: Colors.black45,
-                            ),
+                            Icons.edit_outlined,
+                            color: Colors.black45,
+                          ),
                         ),
                       ),
                     )
@@ -95,7 +95,11 @@ class Profile extends StatelessWidget {
           ProfileMenu(text: "Your Goals", icon: Icon(Icons.fitness_center)),
           ProfileMenu(text: "Security", icon: Icon(Icons.shield)),
           ProfileMenu(text: "Help", icon: Icon(Icons.info_outline)),
-          ProfileMenu(text: "Logout", icon: Icon(Icons.logout))
+          ProfileMenu(
+            text: "Logout",
+            icon: Icon(Icons.logout),
+            press: () => FirebaseAuth.instance.signOut(),
+          )
         ],
       )),
     );

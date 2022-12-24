@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^3.0.1
   youtube_player_flutter: ^8.1.0
   provider: ^6.0.4
+  email_validator: ^2.1.17
 
   # Firebase Database
   cloud_firestore: ^4.2.0

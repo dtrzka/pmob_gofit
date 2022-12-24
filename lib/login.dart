@@ -1,27 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/homepage.dart';
 import 'package:flutter_1/signup.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: MyStatefulWidget(),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  final VoidCallback onClickedSignUp;
+  const Login({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key);
 
   @override
-  State createState() => _MyStatefulWidgetState();
+  State createState() => _LoginState();
 }
 
-class _MyStatefulWidgetState extends State {
-  TextEditingController nameController = TextEditingController();
+class _LoginState extends State<Login> {
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +51,7 @@ class _MyStatefulWidgetState extends State {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: nameController,
+                controller: emailController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
@@ -98,32 +101,48 @@ class _MyStatefulWidgetState extends State {
                     'Login',
                     style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                   ),
-                  onPressed: () {
+                  onPressed:
+                      signIn, /* () {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Homepage()));
-                  },
+                  }, */
                 )),
-            Row(
-              // ignore: sort_child_properties_last
-              children: [
-                const Text('Does not have account?'),
-                TextButton(
-                  child: const Text(
-                    'Sign in',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color.fromARGB(255, 255, 47, 175),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUp()));
-                  },
-                )
-              ],
-              mainAxisAlignment: MainAxisAlignment.center,
+            SizedBox(
+              height: 15,
             ),
+            RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                    style: TextStyle(color: Colors.black),
+                    text: 'Does not have account?',
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = widget.onClickedSignUp,
+                        text: ' Sign Up',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color.fromARGB(255, 255, 47, 175),
+                        ),
+                      )
+                    ])),
           ],
         ));
   }
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+  }
 }
+
+/* final VoidCallback onClickedSignUp;
+  const MyStatefulWidget({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key); */

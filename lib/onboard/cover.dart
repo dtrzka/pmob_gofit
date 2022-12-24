@@ -9,8 +9,8 @@ class Cover extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => Login()));
+          /* Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => Login())); */
         },
         child: Container(
           decoration: const BoxDecoration(
