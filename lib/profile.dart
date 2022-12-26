@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_1/edit_profile.dart';
+import 'package:flutter_1/target.dart';
 import 'package:flutter_1/widget/profile_menu.dart';
 
 class Profile extends StatelessWidget {
@@ -8,6 +9,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       body: SingleChildScrollView(
           child: Column(
@@ -60,7 +62,7 @@ class Profile extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  "Andrew Garfield",
+                  "${user.displayName}",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
@@ -71,7 +73,7 @@ class Profile extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  "Andrew Garfield@mail.you.id",
+                  '${user.email}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
@@ -92,7 +94,14 @@ class Profile extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => editProfile()));
             },
           ),
-          ProfileMenu(text: "Your Goals", icon: Icon(Icons.fitness_center)),
+          ProfileMenu(
+            text: "Your Goals",
+            icon: Icon(Icons.fitness_center),
+            press: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Target()));
+            },
+          ),
           ProfileMenu(text: "Security", icon: Icon(Icons.shield)),
           ProfileMenu(text: "Help", icon: Icon(Icons.info_outline)),
           ProfileMenu(

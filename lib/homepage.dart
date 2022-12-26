@@ -34,7 +34,7 @@ class _HomepageState extends State<Homepage> {
             Container(
               alignment: Alignment.topLeft,
               child: Text(
-                "Morning, ${user.email!}!",
+                "Good Morning, ${user.displayName}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
