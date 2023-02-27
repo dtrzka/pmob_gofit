@@ -37,7 +37,7 @@ class _HomepageState extends State<Homepage> {
                 "Good Morning, ${user.displayName}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 219, 216, 216),
                   fontSize: 40,
                 ),
               ),
